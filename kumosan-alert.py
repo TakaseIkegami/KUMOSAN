@@ -6,8 +6,8 @@ import sys
 
 client = discord.Client()
 args = sys.argv
-main_chat='407113227693064217'
-bot_salon='558342634704470016'
+main_chat='任意のチャンネルid'
+bot_salon='任意のチャンネルid'
 selector = bot_salon
 print(args)
 
