@@ -13,9 +13,11 @@ def keisuke_honda(text, user_id):
             response_string = 'ちょき！'
         elif text.find('パー') > -1 or text.find('ぱー') > -1:
             response_string = 'ぐー！'
-        response_string += '\n :regional_indicator_y: :regional_indicator_o: :regional_indicator_u:  :regional_indicator_w: :regional_indicator_i: :regional_indicator_n:\n やるやん。明日ぼくにリベンジさせて。これあげる。\n\n wp -1 '+user_id+'\n'
-        txt = '雲さん wp -1 <@' + user_id + '>'
-        res = waruiko_point(txt, 0)
+        response_string += '\n :regional_indicator_y: :regional_indicator_o: :regional_indicator_u:  :regional_indicator_w: :regional_indicator_i: :regional_indicator_n:\n やるやん。明日ぼくにリベンジさせて。これあげる。\n\n wp -1 '+ str(user_id) +'\n'
+        txt = '雲さん wp -1 <@' + str(user_id) + '>'
+        print(type(txt))
+        print(type(user_id))
+        res = waruiko_point.waruiko_point(txt, user_id)
         response_string += res
     elif d100 > 3:
         if text.find('グー') > -1 or text.find('ぐー') > -1:

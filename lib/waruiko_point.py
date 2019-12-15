@@ -1,13 +1,16 @@
 import os
+import re
 
 # Count Waruiko Points
 def waruiko_point(text, user_id):
     response_string = ''
     index_st = text.find('wp ')+3
     index_ed = text.find(' <@')
-    index_st2 = text.find(' <@')+3
+    index_st2 = text.find(' <@')+1
     index_ed2 = text.find('>')
     target = text[index_st2:index_ed2]
+    target = re.sub('[<@!>/g]', "", target);
+    print("target: " + target)
     path = 'users/'+target+".txt"
     if os.path.isfile(path) == False:
         with open(path, mode='w') as f:

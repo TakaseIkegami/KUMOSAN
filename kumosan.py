@@ -8,9 +8,9 @@ import discord
 #import subprocess
 #import time
 #import urllib.request
-#import datetime
-#import os
 #from bs4 import BeautifulSoup
+import datetime
+import os
 from lib import wiki
 from lib import weather
 from lib import waruiko_point
@@ -46,11 +46,11 @@ async def on_message(message):
     channel = message.channel
 
     ######## 裏モード ########
-    if message.channel == client.get_channel(XXXXXXXXXXXXXXXXXX) and message.author.id == XXXXXXXXXXXXXXXXXX:
+    if message.channel == client.get_channel(568883421145989140) and message.author.id == 363912500044890112:
         try:
             text = message.content
-            main_chat=XXXXXXXXXXXXXXXXXX
-            bot_salon=XXXXXXXXXXXXXXXXXX
+            main_chat=407113227693064217
+            bot_salon=558342634704470016
             selector = bot_salon
             index_st = text.find(' ')+1
             index_ed = text.find(' ')
@@ -113,10 +113,12 @@ async def on_message(message):
                     msg = '.........始マンディ！！！！！！:crescent_moon:'
                 elif text.find('木曜日') > -1 or text.find('もくもく') > -1:
                     msg = 'もくもくもくようび〜\n'+kumo_san+'\n\n(・_・)ｽｯ\n\nなにがもくもくもくようびだ\n明日もまた仕事だぞ :cloud_lightning:'
+                elif text.find('悪い子') > -1 or text.find('不正') > -1 or text.find('じゃんけん') > -1:
+                    msg = '知らない。よく覚えてない。'
                 elif text.find('自己紹介') > -1:
                     msg = 'はい！はじめまして。クロレラさんに作られたヒヨッ子botの雲さんと申します。趣味は素数を数えることです。皆さんのお役に立てるようにがんばりますので、どうぞよろしくお願いします！:cloud:'
                 elif text.find('help') > -1 or text.find('-h') > -1:
-                    msg += 'https://discordapp.com/channels/XXXXXXXXXXXXXXXXXX/XXXXXXXXXXXXXXXXXX/XXXXXXXXXXXXXXXXXX'
+                    msg += 'https://discordapp.com/channels/407045885281828877/407050154315874315/558382007433035786'
                 elif text.find('慰めて') > -1 or text.find('なぐさめて') > -1 or text.find('アドバイス') > -1 or text.find('助言') > -1:
                     msg = meigen.meigen()
                 elif text.find('グー') > -1 or text.find('チョキ') > -1 or text.find('パー') > -1 or text.find('ぐー') > -1 or text.find('ちょき') > -1 or text.find('ぱー') > -1:
@@ -146,7 +148,7 @@ async def on_message(message):
                 ######## clear in #暴風域 ########
                 elif text.find('おそうじ') > -1 or text.find('お掃除') > -1:
                     history = ""
-                    if channel == client.get_channel(XXXXXXXXXXXXXXXXXX):
+                    if channel == client.get_channel(639304836210229248):
                         async for i in channel.history(oldest_first=True):
                             history += i.author.display_name+" "+i.content+"\n"
                         date = datetime.datetime.today().strftime("%Y_%m_%d")

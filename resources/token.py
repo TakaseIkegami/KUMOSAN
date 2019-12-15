@@ -1,3 +1,3 @@
 def token():
-    token = "ここにトークンを書いてね！"
+    token = "ここにサーバトークンを置いてね！"
     return token
