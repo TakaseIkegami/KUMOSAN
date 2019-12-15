@@ -3,8 +3,8 @@
 (　　•ω•　)   
 ╰◟◞ ͜ ◟◞╯ < Discord上で動作するbot「雲さん」です。
 個人的に運用しているDiscordサーバで友人らに遊んでもらうために作った非常に個人的なbotです。
-使い方は近々Qiitaの記事にでもまとめるので、もし使いたいという方がいるようでしたら、いましばらくお待ち下さい。
-そんなわけで、興が乗ったり、友人にこんな機能欲しいと言われた瞬間にライブコーディング的に機能拡張しているような感じなので、コードが雑で、ファイル別けすらされていません...。近い内にちゃんとリファクタリングします(汗
+使い方はQiitaの記事にもまとめたので、もし使いたい方がいらっしゃるようでしたら、そちらもご覧ください。
+[Discord bot「雲さん」を作ってみた - Qiita](https://qiita.com/charichuma_hack/items/dfcdd422be46ffc311aa)
 
 --
 
@@ -13,6 +13,8 @@
 2019/06/14: add some function.
 
 2019/12/02: add some function, and refactor file structure.
+
+2019/12/16: modified waruiko-point.py and keisuke-honda.py.
 
 --
 
