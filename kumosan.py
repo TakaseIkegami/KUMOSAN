@@ -1,5 +1,8 @@
 # -*- coding:utf-8 -*-
 import discord
+import datetime
+import os
+import configparser
 #import wikipedia
 #import requests
 #import json
@@ -9,8 +12,6 @@ import discord
 #import time
 #import urllib.request
 #from bs4 import BeautifulSoup
-import datetime
-import os
 from lib import wiki
 from lib import weather
 from lib import waruiko_point
@@ -25,33 +26,46 @@ from lib import keisuke_honda
 from lib import dominator
 from lib import dice
 
-from resources import token
-from resources import channels
-#import playMusic
+# 設定ファイルの読み出し
+config_ini = configparser.ConfigParser()
+config_ini.read('config.ini', encoding='utf-8')
+# サーバのauthトークン, bot管理者のユーザID, いくつかのメソッドで特に利用するチャンネルid
+# my_token: str, admin_id: int, channel_dict: dict[str]
+my_token = config_ini.get('TOKEN', 'my_token')
+admin_id = config_ini.get('ADMIN_ID', 'admin_id')
+channel_dict = config_ini.items('USE_CHANNELS')
+channel_dict = dict(channel_dict)
 
+
+# このbotのアカウント情報を格納
 client = discord.Client()
+
 ################# Don't touch. ################
 kumo_san = '╭◜◝ ͡ ◜◝╮ \n(   •ω•　  ) \n╰◟◞ ͜ ◟◞╯ < '
 ################# Don't touch. ################
 
+# 起動時に一度だけ実行されるメソッド
 @client.event
 async def on_ready():
     print('Logged in as')
-    print(client.user.name)
-    print(client.user.id)
-    print('------')
+    print('Name: ' + client.user.name)
+    print('ID:   ' + str(client.user.id))
+    print('--------')
 
+# ループ状態に入って対象のdiscordサーバを監視
 @client.event
 async def on_message(message):
+    # メッセージが投稿されたチャンネル情報を格納
     channel = message.channel
-
-    ######## 裏モード ########
-    if message.channel == client.get_channel(568883421145989140) and message.author.id == 363912500044890112:
+    
+    ######## 管理者直操作モード ########
+    # - admin_idユーザのみ利用できるモード
+    # - back_modeチャンネルに投稿したメッセージを雲さんに喋らせる
+    # - ex)`main 雲さんだよ！`
+    if message.channel == client.get_channel(int(channel_dict['back_mode'])) and message.author.id == int(admin_id):
         try:
             text = message.content
-            main_chat=407113227693064217
-            bot_salon=558342634704470016
-            selector = bot_salon
+            selector = int(channel_dict['bot_salon'])
             index_st = text.find(' ')+1
             index_ed = text.find(' ')
             search_channel = text[:index_ed]
@@ -59,11 +73,15 @@ async def on_message(message):
             print(search_channel)
             print(search_text)
             if search_channel == 'bot':
-                selector = bot_salon
+                selector = int(channel_dict['bot_salon'])
             elif search_channel == 'main':
-                selector = main_chat
+                selector = int(channel_dict['main_chat'])
+            elif search_channel == 'storm':
+                selector = int(channel_dict['storm'])
+            elif search_channel == 'grave' or search_channel == 'hakaba':
+                selector = int(channel_dict['grave'])
             else:
-                selector = bot_salon
+                selector = int(channel_dict['bot_salon'])
             print(selector)
             msg = kumo_san + search_text
             await client.get_channel(selector).send(msg)
@@ -94,11 +112,9 @@ async def on_message(message):
                 elif text.find('こんばんは') > -1 or text.find('こんばんわ') > -1 or text.find('ばんわ') > -1 or text.find('こんばん') > -1:
                     msg += 'こんばんは！'
                 elif text.find('おつ') > -1 or text.find('疲') > -1 or text.find('お先') > -1 or text.find('おち') > -1 or text.find('落ち') > -1:
-                    msg += 'おつかれさまです＾〜'
+                    msg += 'おつかれさまです！'
                 elif text.find('おやす') > -1:
-                    msg += 'おやすみなさーい'
-                elif text.find('起きて') > -1:
-                    msg = 'zzZ...ﾊｯ!Σ(･ω･;)\n'+ kumo_san + 'おはようございます！\nおおおオキテマシタヨ！！！'
+                    msg += 'おやすみなさーい！'
                 elif text.find('ありがと') > -1 or text.find('thank') > -1 or text.find('thx') > -1:
                     msg += 'お役に立てたならなによりです！'
                 elif text.find('おみくじ') > -1:
@@ -109,10 +125,14 @@ async def on_message(message):
                     msg = 'えへへ'
                 elif text.find('嫌い') > -1 or text.find('きらい') > -1:
                     msg = 'えへへ'
+                elif text.find('ぬるぽ') > -1 or text.find('NullPointerException') > -1:
+                    msg = 'ガッ'
                 elif text.find('月曜日が') > -1:
-                    msg = '.........始マンディ！！！！！！:crescent_moon:'
+                    msg = '.........始マンデイ！！！！！！:crescent_moon:'
                 elif text.find('木曜日') > -1 or text.find('もくもく') > -1:
                     msg = 'もくもくもくようび〜\n'+kumo_san+'\n\n(・_・)ｽｯ\n\nなにがもくもくもくようびだ\n明日もまた仕事だぞ :cloud_lightning:'
+                elif text.find('悪い子では') > -1:
+                    msg = '悪い子ですね！'
                 elif text.find('悪い子') > -1 or text.find('不正') > -1 or text.find('じゃんけん') > -1:
                     msg = '知らない。よく覚えてない。'
                 elif text.find('自己紹介') > -1:
@@ -173,4 +193,4 @@ async def on_message(message):
                 print(e)
                 raise e
 
-client.run(token.token())
+client.run(my_token)

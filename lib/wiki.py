@@ -19,11 +19,11 @@ def wikipedia_search(text):
                 wiki_page = wikipedia.page(search_response[1])
             except Exception as e:
                 response_string = 'お探しの言葉ではエラーを起こしました！:cold_sweat:\n' + e.message + '\n' + str(e)
-        response_string = '説明しよう！\n'
+        response_string = '説明しましょう！\n'
         response_string += wiki_page.content[0:200] + '.....\n'
         response_string += wiki_page.url
     else:
-        response_string = '今はまだ見つけられないンゴ…でも頑張って見つけられるようになるゾ〜！'
+        response_string = '今はまだ見つけられません…でも頑張って見つけられるようになりますよー！'
 
     return response_string
 
@@ -49,6 +49,6 @@ def wiki(text):
         response_string += wiki_page.content[0:200] + '.....\n'
         response_string += wiki_page.url
     else:
-        response_string = '今はまだ見つけられないンゴ…でも頑張って見つけられるようになるゾ〜！'
+        response_string = '今はまだ見つけられません…でも頑張って見つけられるようになりますよー！'
 
     return response_string
