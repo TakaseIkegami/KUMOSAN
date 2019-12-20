@@ -16,6 +16,8 @@
 
 2019/12/16: modified waruiko-point.py and keisuke-honda.py.
 
+2019/12/20: modified about token management.
+
 --
 
 いまのところ雲さんができること一覧
