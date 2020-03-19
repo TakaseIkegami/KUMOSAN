@@ -34,30 +34,30 @@
         - `$ pyenv global 3.6.0`
 
 3. pipに必要なパッケージの導入
-  - pyenv環境の場合
-    - `$ pip install -r requirements.txt`
-    - (サーバで `$ pip freeze > requirements.txt` してきたものを、そのまま置いてるので不要なものも入ってると思いますがご容赦下さい^^;)
-  - Ubuntu等にデフォルトで入っているPython3を使う場合
-    - `$ pip3 install -r requirements.txt`
+    - pyenv環境の場合
+        - `$ pip install -r requirements.txt`
+        - (サーバで `$ pip freeze > requirements.txt` してきたものを、そのまま置いてるので不要なものも入ってると思いますがご容赦下さい^^;)
+    - Ubuntu等にデフォルトで入っているPython3を使う場合
+        - `$ pip3 install -r requirements.txt`
 
 4. ご自身のDiscord環境用に設定ファイルを書き換えます。
-  - `$ vim config.ini` 等、好きなエディタで開いて編集していきます。
-  - トークンは[Discord Developer Portal](https://discordapp.com/developers/applications/)から取得できます。 
-    - `Discord Developer Portal > (ご自身が新規作成したアプリ(bot)) > Bot > Build-A-bot > TOKEN` から `Copy` をクリックしてクリップボードにコピー。
-  - 管理者用IDは、ご自身のDiscordサーバでご自身のアカウントを右クリック(右側のユーザ一覧) > 「IDをコピー」で取得できます。
-  - チャンネルIDは、ご自身のDiscordサーバで建てた任意のテキストチャンネルを右クリック(左側のチャンネル一覧) > 「IDをコピー」で取得できます。
+    - `$ vim config.ini` 等、好きなエディタで開いて編集していきます。
+    - トークンは[Discord Developer Portal](https://discordapp.com/developers/applications/)から取得できます。 
+        - `Discord Developer Portal > (ご自身が新規作成したアプリ(bot)) > Bot > Build-A-bot > TOKEN` から `Copy` をクリックしてクリップボードにコピー。
+    - 管理者用IDは、ご自身のDiscordサーバでご自身のアカウントを右クリック(右側のユーザ一覧) > 「IDをコピー」で取得できます。
+    - チャンネルIDは、ご自身のDiscordサーバで建てた任意のテキストチャンネルを右クリック(左側のチャンネル一覧) > 「IDをコピー」で取得できます。
 
 5. 雲さんの起動チェック
-  - pyenv環境の場合
-    - `$ python kumosan.py`
-  - Ubuntu等にデフォルトで入っているPython3を使う場合
-    - `$ python3 kumosan.py`
+    - pyenv環境の場合
+        - `$ python kumosan.py`
+    - Ubuntu等にデフォルトで入っているPython3を使う場合
+        - `$ python3 kumosan.py`
 
 6. 無事起動できたら、デーモンで動かすなりして常駐させましょう。
-  - おすすめはscreen内での実行です。
-    - `$ screen -S kumosan`
-    - `$ python kumosan.py`
-    - (screenを出るには「(Ctrl + a) + d」)
+    - おすすめはscreen内での実行です。
+        - `$ screen -S kumosan`
+        - `$ python kumosan.py`
+        - (screenを出るには「(Ctrl + a) + d」)
 
 
 
