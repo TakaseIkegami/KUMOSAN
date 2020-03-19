@@ -3,8 +3,6 @@
 __pycache__/
 mp3/
 other/
-users/
-removed_chat_logs/
 config.ini
 lib/ctf.py
 lib/__pycache__/
