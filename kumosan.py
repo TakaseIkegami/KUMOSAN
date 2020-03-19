@@ -29,8 +29,7 @@ from lib import dice
 # 設定ファイルの読み出し
 config_ini = configparser.ConfigParser()
 config_ini.read('config.ini', encoding='utf-8')
-# サーバのauthトークン, bot管理者のユーザID, いくつかのメソッドで特に利用するチャンネルid
-# my_token: str, admin_id: int, channel_dict: dict[str]
+# サーバのauthトークン(str), bot管理者のユーザID(int), いくつかのメソッドで特に利用するチャンネルid(dict[str])
 my_token = config_ini.get('TOKEN', 'my_token')
 admin_id = config_ini.get('ADMIN_ID', 'admin_id')
 channel_dict = config_ini.items('USE_CHANNELS')
@@ -50,7 +49,7 @@ async def on_ready():
     print('Logged in as')
     print('Name: ' + client.user.name)
     print('ID:   ' + str(client.user.id))
-    print('--------')
+    print('--------\n')
 
 # ループ状態に入って対象のdiscordサーバを監視
 @client.event
@@ -80,6 +79,10 @@ async def on_message(message):
                 selector = int(channel_dict['storm'])
             elif search_channel == 'grave' or search_channel == 'hakaba':
                 selector = int(channel_dict['grave'])
+            elif search_channel == 'dev':
+                selector = int(channel_dict['dev'])
+            elif search_channel == 'pokemon':
+                selector = int(channel_dict['pokemon'])
             else:
                 selector = int(channel_dict['bot_salon'])
             print(selector)
@@ -89,8 +92,9 @@ async def on_message(message):
         except Exception as e:
             print(e)
             raise e 
-    #########################
+    ####################################
 
+    ######## ここからが主な機能のハンドル ########
     # 「雲さん」で始まるか調べる
     elif message.content.startswith("雲さん"):
     # 送り主がBotだった場合反応したくないので
@@ -139,6 +143,7 @@ async def on_message(message):
                     msg = 'はい！はじめまして。クロレラさんに作られたヒヨッ子botの雲さんと申します。趣味は素数を数えることです。皆さんのお役に立てるようにがんばりますので、どうぞよろしくお願いします！:cloud:'
                 elif text.find('help') > -1 or text.find('-h') > -1:
                     msg += 'https://discordapp.com/channels/407045885281828877/407050154315874315/558382007433035786'
+                #### ここからメソッドを呼び出して使うトリガー検知 ####
                 elif text.find('慰めて') > -1 or text.find('なぐさめて') > -1 or text.find('アドバイス') > -1 or text.find('助言') > -1:
                     msg = meigen.meigen()
                 elif text.find('グー') > -1 or text.find('チョキ') > -1 or text.find('パー') > -1 or text.find('ぐー') > -1 or text.find('ちょき') > -1 or text.find('ぱー') > -1:
@@ -168,7 +173,7 @@ async def on_message(message):
                 ######## clear in #暴風域 ########
                 elif text.find('おそうじ') > -1 or text.find('お掃除') > -1:
                     history = ""
-                    if channel == client.get_channel(639304836210229248):
+                    if channel == client.get_channel(int(channel_dict['storm'])):
                         async for i in channel.history(oldest_first=True):
                             history += i.author.display_name+" "+i.content+"\n"
                         date = datetime.datetime.today().strftime("%Y_%m_%d")
@@ -183,7 +188,7 @@ async def on_message(message):
                         msg += '塵一つ残しません！ :cloud_tornado: '
                     else:
                         msg += 'このコマンドは #暴風域 でしか使えないよ！'
-                ###########################################
+                ##################################
                 else:
                     msg += 'その言葉は知らなかったから調べたよ。\n' + wiki.wiki(text)
                     #メッセージが送られてきたチャンネルへメッセージを送ります
