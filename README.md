@@ -1,4 +1,4 @@
-# kumo-san
+# KUMOSAN
 ╭◜◝ ͡ ◜◝╮   
 (　　•ω•　)   
 ╰◟◞ ͜ ◟◞╯ < Discord上で動作するbot「雲さん」です。
