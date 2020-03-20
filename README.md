@@ -23,8 +23,8 @@
 --
 
 ## セットアップ手順
-1. github([kumo-san](https://github.com/TakaseIkegami/kumo-san))からコードをダウンロードします。
-    - `$ git clone https://github.com/TakaseIkegami/kumo-san`
+1. github([kumo-san](https://github.com/TakaseIkegami/KUMOSAN))からコードをダウンロードします。
+    - `$ git clone https://github.com/TakaseIkegami/KUMOSAN`
 
 2. Python3(v3.6.0)を利用できるようにします。
     - おすすめは[こちら](https://github.com/TakaseIkegami/setup_scripts/blob/master/pyenv/pyenv_setup.sh)をダウンロードしてきて、pyenvの環境を自動でセットアップ！
