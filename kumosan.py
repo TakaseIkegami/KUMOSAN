@@ -71,9 +71,9 @@ async def on_message(message):
             search_text = text[index_st:]
             print(search_channel)
             print(search_text)
-            if search_channel == 'bot':
+            if search_channel == 'bot' or search_channel == 'bot_salon':
                 selector = int(channel_dict['bot_salon'])
-            elif search_channel == 'main':
+            elif search_channel == 'main' or search_channel == 'main_chat':
                 selector = int(channel_dict['main_chat'])
             elif search_channel == 'storm':
                 selector = int(channel_dict['storm'])
