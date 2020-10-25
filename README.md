@@ -70,7 +70,7 @@
 - 全国の詳細な天気情報を提供
   - 空に浮かぶ雲さんにとって天気予報なんてものは朝飯前だ！
   - `雲さん東京の天気教えて`
-  - ([livedoor天気情報API](http://weather.livedoor.com)を使用させていただいています。)
+  - ([livedoor天気情報代替API](http://weather.tsukumijima.net/)を使用させていただいています。)
 
 - wikipedia検索
   - 「なんでもは知らないよ。wikipediaに載ってることだけっ♡」

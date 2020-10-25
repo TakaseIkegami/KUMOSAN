@@ -4,7 +4,7 @@ import json
 # Get Weather Infomation
 # Special Thanks: @black_ichigo153
 def get_weather_information(text):
-    weather_api_url = 'http://weather.livedoor.com/forecast/webservice/json/v1'
+    weather_api_url = 'http://weather.tsukumijima.net/api/forecast'
     response_string = ''
     city_id = ''
     if text.find('長野') > -1:
